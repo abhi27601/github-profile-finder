@@ -1,0 +1,114 @@
+.user {
+  width: 100%;
+  max-width: 300px;
+}
+
+.user .userContainer .imgContainer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.user .userContainer .userRow {
+  overflow: hidden;
+}
+
+.user .userContainer .userRow .userInfo {
+  padding: 14px 0;
+}
+
+.user .userContainer .userRow .userDesc p {
+  margin: 20px 0;
+  word-wrap: break-word;
+}
+
+.user .userContainer .userRow .userLinks {
+  padding: 14px 0;
+}
+
+.user .userContainer .userRow .userLinks i {
+  margin-right: 14px;
+  color: #0366d6;
+}
+
+.user .userContainer .userRow .userLinks i a {
+  text-decoration: none;
+  display: inline-block;
+  color: #0366d6;
+  padding: 6px 0 0 0;
+  transition: color 400ms ease-in-out;
+  word-wrap: break-word;
+}
+
+.user .userContainer .userRow .userLinks i a:hover {
+  color: #0a4a92;
+}
+
+@media (max-width: 670px) {
+  .user .useContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .user .useContainer .imgContainer {
+    width: 100%;
+    max-width: 40%;
+    height: 150px;
+  }
+  .user .useContainer .imgContainer img {
+    width: 100%;
+    height: 100%;
+  }
+  .user .useContainer .userRow {
+    width: 100%;
+    max-width: 56%;
+  }
+  .user .useContainer .userRow .userInfo,
+  .user .useContainer .userRow .userLinks {
+    padding: 0;
+  }
+  .user .useContainer .userRow .userDesc p {
+    margin: 12px 0;
+  }
+}
+
+@media (min-width: 671px) and (max-width: 989px) {
+  .user .userContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .user .userContainer .imgContainer {
+    width: 100%;
+    max-width: 40%;
+  }
+  .user .userContainer .imgContainer img {
+    width: 100%;
+    height: 100%;
+  }
+  .user .userContainer .userRow {
+    width: 100%;
+    max-width: 55%;
+  }
+  .user .userContainer .userRow .userInfo,
+  .user .userContainer .userRow .userLinks {
+    padding: 0;
+  }
+}
+
+@media (max-width: 989px) {
+  .user {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 990px) and (max-width: 1200px) {
+  .user .userContainer .userRow .userDesc p {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 990px) and (max-width: 1250px) {
+  .user {
+    max-width: 26%;
+  }
+}

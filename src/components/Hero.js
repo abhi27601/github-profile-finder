@@ -5,15 +5,28 @@ import User from "./User";
 import ReposNav from "./ReposNav";
 import ReposContainer from "./ReposContainer";
 import { GithubContext } from "../context/GithubContext";
+import Spinner from "./Spinner";
 
 const Hero = () => {
-  const { user, error } = useContext(GithubContext);
+  const { user, error, isLoading } = useContext(GithubContext);
 
+  if (!isLoading && !user) {
+    return (
+      <section className="hero">
+        <Nav />
+        <Container>
+          <p className="noUser"> {error} </p>
+        </Container>
+      </section>
+    );
+  }
   return (
     <section className="hero">
       <Nav />
       <Container>
-        {user ? (
+        {isLoading ? (
+          <Spinner />
+        ) : (
           <>
             <User />
             <div className="wrapper">
@@ -21,8 +34,6 @@ const Hero = () => {
               <ReposContainer />
             </div>{" "}
           </>
-        ) : (
-          <p className="noUser"> {error} </p>
         )}
       </Container>
     </section>

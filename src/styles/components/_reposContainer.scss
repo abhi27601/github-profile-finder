@@ -1,0 +1,36 @@
+.reposContainer {
+  width: 100%;
+  overflow: auto;
+  height: 680px;
+  max-height: 680px;
+}
+
+.reposContainer::-webkit-scrollbar {
+  width: 1em;
+}
+
+.reposContainer::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px #142b44;
+  border-radius: 50px;
+}
+
+.reposContainer::-webkit-scrollbar-thumb {
+  background: #3e556f;
+  outline: 1px solid slategrey;
+  border-radius: 50px;
+}
+
+@media (max-width: 670px) {
+  .reposContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .reposContainer::-webkit-scrollbar {
+    width: 8px;
+  }
+  .reposContainer a {
+    max-width: 94%;
+    margin: 0 auto;
+  }
+}

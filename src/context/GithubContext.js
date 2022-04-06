@@ -9,60 +9,78 @@ export const GithubState = ({ children }) => {
   const [overview, setOverview] = useState(null);
   const [search, setSearch] = useState("abhi27601");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const getSearch = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     getData();
     setSearch("");
   };
 
-  const getData = () => {
-    fetch(`https://api.github.com/users/${search}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.message) {
-          setUser(null);
-          setRepos(null);
-          setFollowers(null);
-          setOverview(null);
-          setError("User not found ...");
-        } else {
-          setUser(data);
-          getOverview();
-          getRepos();
-          getFollowers();
-          setError("");
-        }
-      });
+  const getData = async () => {
+    try {
+      const res = await fetch(`https://api.github.com/users/${search}`);
+      const data = await res.json();
+      setIsLoading(false);
+      if (data.message) {
+        setUser(null);
+        setRepos(null);
+        setFollowers(null);
+        setOverview(null);
+        setError("User not found ...");
+      } else {
+        setUser(data);
+        getOverview();
+        getRepos();
+        getFollowers();
+        setError("");
+      }
+    } catch (error) {
+      setUser(null);
+      setRepos(null);
+      setFollowers(null);
+      setOverview(null);
+      setError("Error fetching users...");
+    }
   };
 
-  const getRepos = () => {
-    fetch(`https://api.github.com/users/${search}/repos`).then((res) =>
-      res.json().then((data) => {
-        setRepos(data);
-      })
-    );
+  const getRepos = async () => {
+    try {
+      const res = await fetch(`https://api.github.com/users/${search}/repos`);
+      const data = await res.json();
+      setRepos(data);
+    } catch (error) {
+      setError("Error fetching Repos");
+    }
   };
 
-  const getOverview = () => {
-    fetch(
-      `https://api.github.com/users/${search}/repos?per_page=8&sort=asc`
-    ).then((res) =>
-      res.json().then((data) => {
-        setOverview(data);
-      })
-    );
+  const getOverview = async () => {
+    try {
+      const res = await fetch(
+        `https://api.github.com/users/${search}/repos?per_page=8&sort=asc`
+      );
+      const data = await res.json();
+      setOverview(data);
+    } catch (error) {
+      setError("Error fetching Overviews");
+    }
   };
 
-  const getFollowers = () => {
-    fetch(`https://api.github.com/users/${search}/followers`).then((res) =>
-      res.json().then((data) => {
-        setFollowers(data);
-      })
-    );
+  const getFollowers = async () => {
+    try {
+      const res = await fetch(
+        `https://api.github.com/users/${search}/followers`
+      );
+      const data = await res.json();
+      setFollowers(data);
+    } catch (error) {
+      setError("Error fetching Followers");
+    }
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getData();
     setSearch("");
   }, []);
@@ -78,6 +96,7 @@ export const GithubState = ({ children }) => {
         search,
         setSearch,
         error,
+        isLoading,
       }}
     >
       {children}

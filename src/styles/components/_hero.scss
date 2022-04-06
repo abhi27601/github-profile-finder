@@ -1,0 +1,43 @@
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero .container:not(:first-child) {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero .container:not(:first-child) .wrapper {
+  width: 100%;
+  max-width: 800px;
+}
+
+.hero .noUser {
+  position: absolute;
+  top: 100px;
+  color: red;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+@media (max-width: 989px) {
+  .hero .container:not(:first-child) {
+    padding: 30px 0;
+    flex-direction: column;
+  }
+  .hero .container:not(:first-child) .wrapper {
+    max-width: 100%;
+    margin: 50px 0 0 0;
+  }
+}
+
+@media (min-width: 990px) and (max-width: 1250px) {
+  .hero .container:not(:first-child) .wrapper {
+    max-width: 70%;
+  }
+}

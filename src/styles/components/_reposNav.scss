@@ -1,0 +1,17 @@
+.reposNav {
+  width: 100%;
+  display: flex;
+  color: #24292e;
+  border-bottom: 1px solid #d1d5da;
+}
+
+.reposNav a {
+  padding: 0 20px 17px 20px;
+  text-decoration: none;
+  display: block;
+}
+
+.reposNav a.active {
+  border-bottom: 2px solid orange;
+  color: #0366d6;
+}
